@@ -1,40 +1,253 @@
 {
   "collections": [
     {
+      "id": "waters-of-march",
+      "slug": "waters-of-march",
+      "nameEn": "Waters of March",
+      "namePt": "Aguas de Marco",
+      "season": "Fall/Winter 2026",
+      "seasonPt": "Outono/Inverno 2026",
+      "thumbnail": "waters.jpg",
+      "imageDir": "img/waters",
+      "heroImage": "img/waters/01.jpg",
+      "descriptionEn": "Inspired by the timeless bossa nova masterpiece by Antonio Carlos Jobim, Waters of March is a collection that carries moments of surreal poetry, woven into the garments and captured in every photograph.",
+      "descriptionPt": "Inspirada na obra-prima atemporal da bossa nova de Antonio Carlos Jobim, Aguas de Marco e uma colecao que carrega momentos de poesia surreal, tecidos nas pecas e capturados em cada fotografia.",
+      "storyEn": [
+        "Inspired by the timeless bossa nova masterpiece by Antonio Carlos Jobim, Waters of March is a collection that carries moments of surreal poetry— woven into the garments and captured in every photograph. Literally and figuratively, we were in the Waters of March.",
+        "To bring our vision to life, we traveled to Belem, the historic capital of Para in northern Brazil. Founded in 1616 and standing proudly at the mouth of the Amazon River, Belem is a city where colonial architecture meets the vibrant, untamed pulse of the rainforest. It is a place of profound cultural richness, blending Indigenous and European influences into a unique atmosphere.",
+        "We were, quite literally, in the waters of March. It rained every day as we scouted the city and its surroundings for locations, and in the end, we shot most of this collection under pouring skies. But the storms were figurative, too. On our very first day in Belem, I suffered a detached retina and lost vision in my right eye, requiring emergency surgery the following morning. By the third day, a severe allergic reaction to local cuisine left me hospitalized, voiceless, and relying on adrenaline injections to recover. Amidst this, members of our crew were quietly navigating their own personal turmoils. Yet, it is in the darkest storms that true colors shine. I have always believed that “friends will be friends,” a phrase that represents not just shared joy, but shared burdens. When I was physically unable to be on set, my incredible team stepped up. Under the guidance of our Production Coordinator, Bert de Liefde, they took over the project and executed it flawlessly.",
+        "This collection is dedicated to them, to Ravanelli Mesquita, Thiago Lobato, Juan Ripoll, Bert de Liefde, and Marcelo Migs, also to my atelier team — Eudocia Medeiros, Renata Silva, Anne and Tauan Linhares. I have no words to fully express my respect and appreciation. Thank you for being there for me. I love you as friends, and I am in awe of the work you do. Waters of March is as much yours as it is mine.",
+        "Waters of March is more than a fashion collection; it is a celebration of artistic perseverance and the profound power of friendship."
+      ],
+      "storyPt": [
+        "Inspirada na obra-prima atemporal da bossa nova de Antonio Carlos Jobim, Aguas de Marco e uma colecao que carrega momentos de poesia surreal — tecidos nas pecas e capturados em cada fotografia. Literal e figurativamente, estavamos nas Aguas de Marco.",
+        "Para dar vida a nossa visao, viajamos para Belem, a historica capital do Para, no norte do Brasil. Fundada em 1616 e localizada orgulhosamente na foz do Rio Amazonas, Belem e uma cidade onde a arquitetura colonial se encontra com o pulso vibrante e selvagem da floresta tropical. E um lugar de profunda riqueza cultural, que mistura influencias indigenas e europeias em uma atmosfera unica.",
+        "Estavamos, literalmente, nas aguas de marco. Choveu todos os dias enquanto percorremos a cidade e seus arredores em busca de locacoes e, no final, fotografamos a maior parte desta colecao sob ceus de chuva torrencial. Mas as tempestades tambem foram figurativas. No nosso primeiro dia em Belem, sofri um descolamento de retina e perdi a visao no olho direito, necessitando de cirurgia de emergencia na manha seguinte. No terceiro dia, uma reacao alergica grave a culinaria local me deixou hospitalizado, sem voz, dependendo de injecoes de adrenalina para me recuperar. Em meio a isso, membros da equipe navegavam silenciosamente por seus proprios turbilhoes pessoais. No entanto, e nas tempestades mais sombrias que as verdadeiras cores brilham. Sempre acreditei que “amigos serao amigos” — uma frase que representa nao apenas alegria compartilhada, mas tambem fardos compartilhados. Quando eu estava fisicamente impossibilitado de estar no set, minha incrivel equipe assumiu o controle. Sob a orientacao do nosso Coordenador de Producao, Bert de Liefde, eles tomaram conta do projeto e o executaram de forma impecavel.",
+        "Esta colecao e dedicada a eles — a Ravanelli Mesquita, Thiago Lobato, Juan Ripoll, Bert de Liefde e Marcelo Migs — tambem a minha equipe do atelier: Eudocia Medeiros, Renata Silva, Anne e Tauan Linhares. Nao tenho palavras para expressar completamente meu respeito e apreco. Obrigado por estarem ao meu lado. Amo voces como amigos e me impressiono com o trabalho que fazem. Aguas de Marco e tanto de voces quanto minha.",
+        "Aguas de Marco e mais do que uma colecao de moda; e uma celebracao da perseveranca artistica e do profundo poder da amizade."
+      ],
+      "images": [
+        {
+          "file": "img/waters/01.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/02.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/03.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/04.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/05.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/06.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/07.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/08.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/09.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/10.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/11.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/12.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/13.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/14.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/15.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/16.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/17.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/18.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/19.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        },
+        {
+          "file": "img/waters/20.jpg",
+          "descriptionEn": "",
+          "descriptionPt": ""
+        }
+      ]
+    },
+    {
       "id": "tkos",
       "slug": "tkos",
       "nameEn": "The Kindness of Strangers",
       "namePt": "A Gentileza dos Estranhos",
       "season": "Latest Collection",
-      "seasonPt": "Coleção Mais Recente",
+      "seasonPt": "ColeÃ§Ã£o Mais Recente",
       "thumbnail": "tks.jpg",
       "imageDir": "img/tkos",
       "pageFile": "tkos.html",
       "descriptionEn": "Our collection titles never come to us in the beginning. They reveal themselves slowly while we're photographing, filming, or sometimes days after we've finished documenting the looks.",
-      "descriptionPt": "Os títulos das nossas coleções nunca vêm no início. Eles se revelam lentamente enquanto estamos fotografando, filmando, ou às vezes dias depois de terminarmos de documentar os looks.",
+      "descriptionPt": "Os tÃ­tulos das nossas coleÃ§Ãµes nunca vÃªm no inÃ­cio. Eles se revelam lentamente enquanto estamos fotografando, filmando, ou Ã s vezes dias depois de terminarmos de documentar os looks.",
       "heroImage": "img/tkos/capa.jpg",
       "images": [
-        {"file": "img/tkos/capa.jpg", "descriptionEn": "Cover image", "descriptionPt": "Imagem de capa"},
-        {"file": "img/tkos/01.jpg", "descriptionEn": "Brocade and wool houndstooth dress with slashed silk on sides and yoke in silk lace", "descriptionPt": "Vestido de brocado e lã pied-de-poule com seda cortada nas laterais e cabeção em renda de seda"},
-        {"file": "img/tkos/02.jpg", "descriptionEn": "Bias cut cowl neck top and Vlisco Dutch Wax cotton pants", "descriptionPt": "Top com decote drapeado cortado em viés e calça de algodão Dutch Wax Vlisco"},
-        {"file": "img/tkos/03.jpg", "descriptionEn": "Linen and Cotton dress embellished with bias cut tape and bell sleeves", "descriptionPt": "Vestido de linho e algodão adornado com fita cortada em viés e mangas sino"},
-        {"file": "img/tkos/04.jpg", "descriptionEn": "Silk brocade and wool houndstooth suit", "descriptionPt": "Tailleur de brocado de seda e lã pied-de-poule"},
-        {"file": "img/tkos/05.jpg", "descriptionEn": "Silk brocade jacket with 3/4 sleeves and concealed mother of pearl buttons and pleated silk brocade skirt with hem embellishment in cotton", "descriptionPt": "Jaqueta de brocado de seda com mangas 3/4 e botões de madrepérola ocultos e saia plissada de brocado de seda com acabamento em algodão"},
-        {"file": "img/tkos/06.jpg", "descriptionEn": "Color block fitted jacket in mixed fabrics and full circle plaid skirt with details in feathers and embellished hem", "descriptionPt": "Jaqueta ajustada color block em tecidos mistos e saia rodada xadrez com detalhes em penas e barra adornada"},
-        {"file": "img/tkos/07.jpg", "descriptionEn": "Cotton and silk suit with details in grey stitches and metallic flowered collar", "descriptionPt": "Tailleur de algodão e seda com detalhes em costuras cinza e gola metálica florida"},
-        {"file": "img/tkos/08.jpg", "descriptionEn": "Collaged wool sweater. Silks, cotton, acrylic yarn and a tie makes the composition. The skirt is made with tear drop lace and silk lining cut on bias", "descriptionPt": "Suéter de lã em colagem. Sedas, algodão, fio acrílico e uma gravata compõem a peça. A saia é feita com renda gota e forro de seda cortado em viés"},
-        {"file": "img/tkos/09.jpg", "descriptionEn": "Front peplum jacket made with African cloth, silk bias tape, and a tie as embellishment. Silk Pantalona with pleats on front and back and no side seams", "descriptionPt": "Jaqueta peplum frontal feita com tecido africano, fita de seda em viés e gravata como adorno. Pantalona de seda com pregas frente e costas sem costuras laterais"},
-        {"file": "img/tkos/10.jpg", "descriptionEn": "Silk lavallière blouse with cotton bias tape as embellishment, side zipper", "descriptionPt": "Blusa lavallière de seda com fita de algodão em viés como adorno, zíper lateral"},
-        {"file": "img/tkos/11.jpg", "descriptionEn": "Dolman sleeves cotton maxi dress with slashed waist detail and contrasting fabric hidden hem", "descriptionPt": "Vestido maxi de algodão com mangas dolman, detalhe de cintura cortada e barra oculta em tecido contrastante"},
-        {"file": "img/tkos/12.jpg", "descriptionEn": "Look 12", "descriptionPt": "Look 12"},
-        {"file": "img/tkos/13.jpg", "descriptionEn": "Look 13", "descriptionPt": "Look 13"},
-        {"file": "img/tkos/14.jpg", "descriptionEn": "Look 14", "descriptionPt": "Look 14"},
-        {"file": "img/tkos/15.jpg", "descriptionEn": "Look 15", "descriptionPt": "Look 15"},
-        {"file": "img/tkos/16.jpg", "descriptionEn": "Look 16", "descriptionPt": "Look 16"},
-        {"file": "img/tkos/17.jpg", "descriptionEn": "Look 17", "descriptionPt": "Look 17"},
-        {"file": "img/tkos/18.jpg", "descriptionEn": "Look 18", "descriptionPt": "Look 18"},
-        {"file": "img/tkos/19.jpg", "descriptionEn": "Look 19", "descriptionPt": "Look 19"},
-        {"file": "img/tkos/20.jpg", "descriptionEn": "Look 20", "descriptionPt": "Look 20"}
+        {
+          "file": "img/tkos/capa.jpg",
+          "descriptionEn": "Cover image",
+          "descriptionPt": "Imagem de capa"
+        },
+        {
+          "file": "img/tkos/01.jpg",
+          "descriptionEn": "Brocade and wool houndstooth dress with slashed silk on sides and yoke in silk lace",
+          "descriptionPt": "Vestido de brocado e lÃ£ pied-de-poule com seda cortada nas laterais e cabeÃ§Ã£o em renda de seda"
+        },
+        {
+          "file": "img/tkos/02.jpg",
+          "descriptionEn": "Bias cut cowl neck top and Vlisco Dutch Wax cotton pants",
+          "descriptionPt": "Top com decote drapeado cortado em viÃ©s e calÃ§a de algodÃ£o Dutch Wax Vlisco"
+        },
+        {
+          "file": "img/tkos/03.jpg",
+          "descriptionEn": "Linen and Cotton dress embellished with bias cut tape and bell sleeves",
+          "descriptionPt": "Vestido de linho e algodÃ£o adornado com fita cortada em viÃ©s e mangas sino"
+        },
+        {
+          "file": "img/tkos/04.jpg",
+          "descriptionEn": "Silk brocade and wool houndstooth suit",
+          "descriptionPt": "Tailleur de brocado de seda e lÃ£ pied-de-poule"
+        },
+        {
+          "file": "img/tkos/05.jpg",
+          "descriptionEn": "Silk brocade jacket with 3/4 sleeves and concealed mother of pearl buttons and pleated silk brocade skirt with hem embellishment in cotton",
+          "descriptionPt": "Jaqueta de brocado de seda com mangas 3/4 e botÃµes de madrepÃ©rola ocultos e saia plissada de brocado de seda com acabamento em algodÃ£o"
+        },
+        {
+          "file": "img/tkos/06.jpg",
+          "descriptionEn": "Color block fitted jacket in mixed fabrics and full circle plaid skirt with details in feathers and embellished hem",
+          "descriptionPt": "Jaqueta ajustada color block em tecidos mistos e saia rodada xadrez com detalhes em penas e barra adornada"
+        },
+        {
+          "file": "img/tkos/07.jpg",
+          "descriptionEn": "Cotton and silk suit with details in grey stitches and metallic flowered collar",
+          "descriptionPt": "Tailleur de algodÃ£o e seda com detalhes em costuras cinza e gola metÃ¡lica florida"
+        },
+        {
+          "file": "img/tkos/08.jpg",
+          "descriptionEn": "Collaged wool sweater. Silks, cotton, acrylic yarn and a tie makes the composition. The skirt is made with tear drop lace and silk lining cut on bias",
+          "descriptionPt": "SuÃ©ter de lÃ£ em colagem. Sedas, algodÃ£o, fio acrÃ­lico e uma gravata compÃµem a peÃ§a. A saia Ã© feita com renda gota e forro de seda cortado em viÃ©s"
+        },
+        {
+          "file": "img/tkos/09.jpg",
+          "descriptionEn": "Front peplum jacket made with African cloth, silk bias tape, and a tie as embellishment. Silk Pantalona with pleats on front and back and no side seams",
+          "descriptionPt": "Jaqueta peplum frontal feita com tecido africano, fita de seda em viÃ©s e gravata como adorno. Pantalona de seda com pregas frente e costas sem costuras laterais"
+        },
+        {
+          "file": "img/tkos/10.jpg",
+          "descriptionEn": "Silk lavalliÃ¨re blouse with cotton bias tape as embellishment, side zipper",
+          "descriptionPt": "Blusa lavalliÃ¨re de seda com fita de algodÃ£o em viÃ©s como adorno, zÃ­per lateral"
+        },
+        {
+          "file": "img/tkos/11.jpg",
+          "descriptionEn": "Dolman sleeves cotton maxi dress with slashed waist detail and contrasting fabric hidden hem",
+          "descriptionPt": "Vestido maxi de algodÃ£o com mangas dolman, detalhe de cintura cortada e barra oculta em tecido contrastante"
+        },
+        {
+          "file": "img/tkos/12.jpg",
+          "descriptionEn": "Look 12",
+          "descriptionPt": "Look 12"
+        },
+        {
+          "file": "img/tkos/13.jpg",
+          "descriptionEn": "Look 13",
+          "descriptionPt": "Look 13"
+        },
+        {
+          "file": "img/tkos/14.jpg",
+          "descriptionEn": "Look 14",
+          "descriptionPt": "Look 14"
+        },
+        {
+          "file": "img/tkos/15.jpg",
+          "descriptionEn": "Look 15",
+          "descriptionPt": "Look 15"
+        },
+        {
+          "file": "img/tkos/16.jpg",
+          "descriptionEn": "Look 16",
+          "descriptionPt": "Look 16"
+        },
+        {
+          "file": "img/tkos/17.jpg",
+          "descriptionEn": "Look 17",
+          "descriptionPt": "Look 17"
+        },
+        {
+          "file": "img/tkos/18.jpg",
+          "descriptionEn": "Look 18",
+          "descriptionPt": "Look 18"
+        },
+        {
+          "file": "img/tkos/19.jpg",
+          "descriptionEn": "Look 19",
+          "descriptionPt": "Look 19"
+        },
+        {
+          "file": "img/tkos/20.jpg",
+          "descriptionEn": "Look 20",
+          "descriptionPt": "Look 20"
+        }
       ]
     },
     {
@@ -43,12 +256,12 @@
       "nameEn": "Wanderlust",
       "namePt": "Wanderlust",
       "season": "Spring/Summer 2024",
-      "seasonPt": "Primavera/Verão 2024",
+      "seasonPt": "Primavera/VerÃ£o 2024",
       "thumbnail": "wl.jpg",
       "imageDir": "img/wanderlust",
       "pageFile": "wanderlust.html",
       "descriptionEn": "Travel inspired haute couture pieces",
-      "descriptionPt": "Peças de alta costura inspiradas em viagens",
+      "descriptionPt": "PeÃ§as de alta costura inspiradas em viagens",
       "heroImage": "img/wanderlust/01.jpg",
       "images": []
     },
@@ -56,9 +269,9 @@
       "id": "soft-seduction",
       "slug": "soft-seduction",
       "nameEn": "Soft Seduction",
-      "namePt": "Sedução Suave",
+      "namePt": "SeduÃ§Ã£o Suave",
       "season": "Spring/Summer 2024",
-      "seasonPt": "Primavera/Verão 2024",
+      "seasonPt": "Primavera/VerÃ£o 2024",
       "thumbnail": "softsed.jpg",
       "imageDir": "img/softseduction",
       "pageFile": "soft-seduction.html",
@@ -77,8 +290,8 @@
       "thumbnail": "sampa.jpg",
       "imageDir": "img/SAMPA",
       "pageFile": "sampa-sp.html",
-      "descriptionEn": "Urban-inspired collection from São Paulo",
-      "descriptionPt": "Coleção inspirada na urbanidade de São Paulo",
+      "descriptionEn": "Urban-inspired collection from SÃ£o Paulo",
+      "descriptionPt": "ColeÃ§Ã£o inspirada na urbanidade de SÃ£o Paulo",
       "heroImage": "img/SAMPA/01.jpg",
       "images": []
     },
@@ -93,7 +306,7 @@
       "imageDir": "img/rio",
       "pageFile": "rio.html",
       "descriptionEn": "Vibrant and dynamic designs inspired by Rio de Janeiro",
-      "descriptionPt": "Designs vibrantes e dinâmicos inspirados no Rio de Janeiro",
+      "descriptionPt": "Designs vibrantes e dinÃ¢micos inspirados no Rio de Janeiro",
       "heroImage": "img/rio/01.jpg",
       "images": []
     },
@@ -101,14 +314,14 @@
       "id": "colors-and-devotion",
       "slug": "colors-and-devotion",
       "nameEn": "Colors and Devotion",
-      "namePt": "Cores e Devoção",
+      "namePt": "Cores e DevoÃ§Ã£o",
       "season": "Spring/Summer 2022",
-      "seasonPt": "Primavera/Verão 2022",
+      "seasonPt": "Primavera/VerÃ£o 2022",
       "thumbnail": "thumbs.jpg",
       "imageDir": "img/ciclo",
       "pageFile": "colors-and-devotion.html",
       "descriptionEn": "Spring/Summer 2022 collection celebrating color and devotion",
-      "descriptionPt": "Coleção Primavera/Verão 2022 celebrando cor e devoção",
+      "descriptionPt": "ColeÃ§Ã£o Primavera/VerÃ£o 2022 celebrando cor e devoÃ§Ã£o",
       "heroImage": "img/ciclo/1.jpg",
       "images": []
     },
@@ -116,14 +329,14 @@
       "id": "land-of-plenty",
       "slug": "land-of-plenty",
       "nameEn": "Land of Plenty",
-      "namePt": "Terra de Abundância",
+      "namePt": "Terra de AbundÃ¢ncia",
       "season": "Fall/Winter 2021",
       "seasonPt": "Outono/Inverno 2021",
       "thumbnail": "thumblp.jpg",
       "imageDir": "img/2020fw",
       "pageFile": "land-of-plenty.html",
       "descriptionEn": "Fall/Winter 2021 collection exploring abundance and richness",
-      "descriptionPt": "Coleção Outono/Inverno 2021 explorando abundância e riqueza",
+      "descriptionPt": "ColeÃ§Ã£o Outono/Inverno 2021 explorando abundÃ¢ncia e riqueza",
       "heroImage": "img/2020fw/1.jpg",
       "images": []
     },
@@ -131,14 +344,14 @@
       "id": "touchingfromadistance",
       "slug": "touchingfromadistance",
       "nameEn": "Touching from a Distance",
-      "namePt": "Tocando à Distância",
+      "namePt": "Tocando Ã  DistÃ¢ncia",
       "season": "Spring/Summer 2021",
-      "seasonPt": "Primavera/Verão 2021",
+      "seasonPt": "Primavera/VerÃ£o 2021",
       "thumbnail": "thumbthouch.jpg",
       "imageDir": "img/touching",
       "pageFile": "touchingfromadistance.html",
       "descriptionEn": "Spring/Summer 2021 collection inspired by connection and distance",
-      "descriptionPt": "Coleção Primavera/Verão 2021 inspirada em conexão e distância",
+      "descriptionPt": "ColeÃ§Ã£o Primavera/VerÃ£o 2021 inspirada em conexÃ£o e distÃ¢ncia",
       "heroImage": "img/touching/01.jpg",
       "images": []
     },
@@ -153,7 +366,7 @@
       "imageDir": "img/gentle",
       "pageFile": "gentle_stillness.html",
       "descriptionEn": "Fall/Winter 2020 collection embracing minimalist elegance",
-      "descriptionPt": "Coleção Outono/Inverno 2020 abraçando elegância minimalista",
+      "descriptionPt": "ColeÃ§Ã£o Outono/Inverno 2020 abraÃ§ando elegÃ¢ncia minimalista",
       "heroImage": "img/gentle/01.jpg",
       "images": []
     },
@@ -161,14 +374,14 @@
       "id": "reflections",
       "slug": "reflections",
       "nameEn": "Reflections",
-      "namePt": "Reflexões",
+      "namePt": "ReflexÃµes",
       "season": "Spring/Summer 2020",
-      "seasonPt": "Primavera/Verão 2020",
+      "seasonPt": "Primavera/VerÃ£o 2020",
       "thumbnail": "thumb reflections.jpg",
       "imageDir": "img/reflections",
       "pageFile": "reflections.html",
       "descriptionEn": "Spring/Summer 2020 collection exploring introspection",
-      "descriptionPt": "Coleção Primavera/Verão 2020 explorando introspecção",
+      "descriptionPt": "ColeÃ§Ã£o Primavera/VerÃ£o 2020 explorando introspecÃ§Ã£o",
       "heroImage": "img/reflections/01.jpg",
       "images": []
     },
@@ -176,14 +389,14 @@
       "id": "polymath",
       "slug": "polymath",
       "nameEn": "Polymath",
-      "namePt": "Polímata",
+      "namePt": "PolÃ­mata",
       "season": "Fall/Winter 2019",
       "seasonPt": "Outono/Inverno 2019",
       "thumbnail": "THUMB POLYMATH.jpg",
       "imageDir": "img/polymath",
       "pageFile": "polymath.html",
       "descriptionEn": "Fall/Winter 2019 collection celebrating versatility and knowledge",
-      "descriptionPt": "Coleção Outono/Inverno 2019 celebrando versatilidade e conhecimento",
+      "descriptionPt": "ColeÃ§Ã£o Outono/Inverno 2019 celebrando versatilidade e conhecimento",
       "heroImage": "img/polymath/01.jpg",
       "images": []
     },
@@ -191,14 +404,14 @@
       "id": "sp2019",
       "slug": "sp2019",
       "nameEn": "Spring/Summer 2019",
-      "namePt": "Primavera/Verão 2019",
+      "namePt": "Primavera/VerÃ£o 2019",
       "season": "Spring/Summer 2019",
-      "seasonPt": "Primavera/Verão 2019",
+      "seasonPt": "Primavera/VerÃ£o 2019",
       "thumbnail": "img/thumbhs.jpg",
       "imageDir": "img/sp2019",
       "pageFile": "sp2019.html",
       "descriptionEn": "Spring/Summer 2019 collection",
-      "descriptionPt": "Coleção Primavera/Verão 2019",
+      "descriptionPt": "ColeÃ§Ã£o Primavera/VerÃ£o 2019",
       "heroImage": "img/sp2019/01.jpg",
       "images": []
     }

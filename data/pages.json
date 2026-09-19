@@ -1,0 +1,40 @@
+{
+  "about": {
+    "titleEn": "About Júlio César",
+    "titlePt": "Sobre Júlio César",
+    "photos": ["img/profile.jpeg", "img/profile1.jpeg", "img/profile2.jpeg"],
+    "photoCredit": "Lucas Candido",
+    "photoCreditUrl": "https://www.instagram.com/lucascandidofoto/",
+    "bioEn": [
+      "<b>J</b>úlio César, originally from Mossoró, Brazil, has always had a passion for the arts, particularly music, books, and painting. His deep connection to regional folklore art has influenced his artistic journey from an early age.",
+      "Since moving to the U.S. in 1993, Júlio has thrived in the fashion industry for over 30 years, showcasing his unique talents in collage on fabric. His creations, known for their strength, vibrancy, and originality, have been featured in prestigious venues like the New Museum and various New York City fashion shows.",
+      "Júlio established himself as a respected figure in fashion by pioneering his own techniques. His artworks are characterized by strength, vibrant colors, and captivating designs, emphasizing quality and originality that are immediately apparent.",
+      "Throughout his career, Júlio has crafted sophisticated and innovative pieces for various notable figures and institutions in the U.S. These include Koos Van Den Akker, Sherry Bronfman, Lauren Hutton, Alyce Santoro, Schaumburg Center, Desingtex, The New Museum, Joan Hardy Clark, and Zenobia Lee. In Brazil, Júlio has collaborated with Lia de Itamaracá, Pinga Store, Casa de Antonia, Teresa Cristina, and Martinho da Vila.",
+      "Among his many collaborations, Júlio holds his partnership with Vogue Patterns in high esteem, considering it one of his most robust and fulfilling collaborations.",
+      "This portrayal highlights Júlio's artistic prowess, his influential collaborations, and his commitment to pushing the boundaries of fashion through creativity and originality.",
+      "Currently dividing his time between Brazil and New York with his partner, Júlio draws inspiration from his diverse interests, travels, and the support of loved ones, continuing to evolve as an artist driven by quality and innovation."
+    ],
+    "bioPt": [
+      "<b>J</b>úlio César, natural de Mossoró/RN, sempre teve paixão pelas artes, principalmente pela música, livros e pintura. A sua profunda ligação à arte folclórica regional influenciou desde cedo o seu percurso artístico.",
+      "Desde que se mudou para os EUA, em 1993, Júlio tem prosperado na indústria da moda há mais de 30 anos, mostrando o seu talento único na colagem em tecido. Suas criações, conhecidas pela sua força, vibração e originalidade, foram apresentadas em locais de prestígio, como o New Museum e em vários desfiles de moda em Nova York.",
+      "Júlio se consolidou como uma figura respeitada na moda ao ser pioneiro em suas próprias técnicas. Suas obras são caracterizadas pela força, cores vibrantes e designs cativantes, enfatizando a qualidade e a originalidade que são imediatamente aparentes.",
+      "Ao longo da sua carreira, Júlio criou peças sofisticadas e inovadoras para diversas figuras e instituições notáveis nos EUA. Estas incluem, Koos Van Den Akker, Sherry Bronfman, Lauren Hutton, Alyce Santoro, Schaumburg Center, Desingtex, The New Museum, Joan Hardy Clark, e Zenobia Lee. No Brasil, Júlio possui várias colaborações, entre elas, Lia de Itamaracá, Pinga Store, Casa de Antonia, Teresa Cristina e Martinho da Vila.",
+      "Entre as suas muitas colaborações, Júlio tem em alta estima a parceria com a Vogue Patterns considerando a uma das suas colaborações mais robustas e gratificantes.",
+      "Atualmente dividindo seu tempo entre o Brasil e Nova York com seu parceiro, Júlio se inspira em seus diversos interesses, viajando e apoiando entes queridos, continuando a evoluir como um artista movido pela qualidade e inovação."
+    ]
+  },
+  "contact": {
+    "usa": {
+      "phone": "646-339-6413",
+      "email": "juliocesarnyc@yahoo.com",
+      "address": "246 West 38th Street, Suite 1106 - New York, NY, 10018",
+      "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.3628552967493!2d-73.99307622489881!3d40.754043335042084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259acf3709d43%3A0xe2187093b06c2b5c!2s246%20W%2038th%20St%20%231106%2C%20New%20York%2C%20NY%2010018%2C%20EUA!5e0!3m2!1spt-BR!2sbr!4v1683806012315!5m2!1spt-BR!2sbr"
+    },
+    "brazil": {
+      "phone": "+55 84 3027 0512 | +55 84 9405 5260",
+      "email": "contato.juliocesarac@gmail.com",
+      "address": "Rua Trairi, 514, Petropolis, Natal-RN Brasil",
+      "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.495432389248!2d-35.1998834!3d-5.7854654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b3006c5d2204b1%3A0xfa3bb946d6be305!2sRua%20Trairi%2C%20514%20-%20Petr%C3%B3polis%2C%20Natal%20-%20RN%2C%2059020-150!5e0!3m2!1spt-BR!2sbr!4v1689787324798!5m2!1spt-BR!2sbr"
+    }
+  }
+}

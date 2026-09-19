@@ -1,2 +1,51 @@
 RewriteEngine On
-RewriteRule ^([0-9A-Za-z-_]+)$ /$1.html
+
+# --- Redirects: old .html pages → new PHP pages ---
+
+# Static pages EN
+RewriteRule ^about\.html$           /sobre.php [R=301,L]
+RewriteRule ^press\.html$           /imprensa.php [R=301,L]
+RewriteRule ^contact\.html$         /contato.php [R=301,L]
+RewriteRule ^collection\.html$      /colecoes.php [R=301,L]
+
+# Static pages PT
+RewriteRule ^about_pt\.html$        /sobre.php?lang=pt [R=301,L]
+RewriteRule ^press_pt\.html$        /imprensa.php?lang=pt [R=301,L]
+RewriteRule ^contact_pt\.html$      /contato.php?lang=pt [R=301,L]
+RewriteRule ^collection_pt\.html$   /colecoes.php?lang=pt [R=301,L]
+
+# Collection pages EN → colecao.php?id=...
+RewriteRule ^waters-of-march\.html$         /colecao.php?id=waters-of-march [R=301,L]
+RewriteRule ^tkos\.html$                    /colecao.php?id=tkos [R=301,L]
+RewriteRule ^wanderlust\.html$              /colecao.php?id=wanderlust [R=301,L]
+RewriteRule ^soft-seduction\.html$          /colecao.php?id=soft-seduction [R=301,L]
+RewriteRule ^sampa-sp\.html$                /colecao.php?id=sampa-sp [R=301,L]
+RewriteRule ^sampa\.html$                   /colecao.php?id=sampa-sp [R=301,L]
+RewriteRule ^rio\.html$                     /colecao.php?id=rio [R=301,L]
+RewriteRule ^colors-and-devotion\.html$     /colecao.php?id=colors-and-devotion [R=301,L]
+RewriteRule ^land-of-plenty\.html$          /colecao.php?id=land-of-plenty [R=301,L]
+RewriteRule ^touchingfromadistance\.html$   /colecao.php?id=touchingfromadistance [R=301,L]
+RewriteRule ^gentle_stillness\.html$        /colecao.php?id=gentle-stillness [R=301,L]
+RewriteRule ^reflections\.html$             /colecao.php?id=reflections [R=301,L]
+RewriteRule ^polymath\.html$                /colecao.php?id=polymath [R=301,L]
+RewriteRule ^sp2019\.html$                  /colecao.php?id=sp2019 [R=301,L]
+RewriteRule ^ciclo-en\.html$                /colecao.php?id=ciclo [R=301,L]
+
+# Collection pages PT → colecao.php?id=...&lang=pt
+RewriteRule ^waters-of-march_pt\.html$      /colecao.php?id=waters-of-march&lang=pt [R=301,L]
+RewriteRule ^tkos_pt\.html$                 /colecao.php?id=tkos&lang=pt [R=301,L]
+RewriteRule ^wanderlust_pt\.html$           /colecao.php?id=wanderlust&lang=pt [R=301,L]
+RewriteRule ^soft-seduction_pt\.html$       /colecao.php?id=soft-seduction&lang=pt [R=301,L]
+RewriteRule ^sampa-sp_pt\.html$             /colecao.php?id=sampa-sp&lang=pt [R=301,L]
+RewriteRule ^rio_pt\.html$                  /colecao.php?id=rio&lang=pt [R=301,L]
+RewriteRule ^colors-and-devotion_pt\.html$  /colecao.php?id=colors-and-devotion&lang=pt [R=301,L]
+RewriteRule ^gentle_stillness_pt\.html$     /colecao.php?id=gentle-stillness&lang=pt [R=301,L]
+RewriteRule ^sp2019_pt\.html$               /colecao.php?id=sp2019&lang=pt [R=301,L]
+RewriteRule ^ciclo\.html$                   /colecao.php?id=ciclo&lang=pt [R=301,L]
+
+# Clean URLs (optional — works when PHP is available)
+RewriteRule ^colecoes/?$            /colecoes.php [L]
+RewriteRule ^colecoes/([a-z0-9\-]+)/?$  /colecao.php?id=$1 [L]
+RewriteRule ^sobre/?$               /sobre.php [L]
+RewriteRule ^imprensa/?$            /imprensa.php [L]
+RewriteRule ^contato/?$             /contato.php [L]
