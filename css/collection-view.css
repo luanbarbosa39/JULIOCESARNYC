@@ -1,0 +1,38 @@
+.collection-season {
+    color: #cc0000;
+    font-style: italic;
+    margin-top: -10px;
+}
+
+#collection-header .box {
+    text-align: center;
+    padding: 20px 0;
+}
+
+#hero-container {
+    margin-bottom: 30px;
+}
+
+#hero-container img {
+    width: 100%;
+}
+
+#pieces-grid .col-md-4 {
+    margin-bottom: 30px;
+}
+
+#pieces-grid .box-shadow img {
+    width: 100%;
+    transition: filter 0.3s ease;
+}
+
+#pieces-grid .box-shadow:hover img {
+    filter: brightness(1.05);
+}
+
+.textofoto {
+    text-align: center;
+    padding: 8px 5px;
+    font-size: 0.9em;
+    color: #cccccc;
+}

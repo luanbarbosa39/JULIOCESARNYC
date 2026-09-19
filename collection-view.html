@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Julio Cesar NYC">
+    <link rel="shortcut icon" href="img/icone.png" type="image/png" />
+    <script src="https://kit.fontawesome.com/64c0754995.js" crossorigin="anonymous"></script>
+    <title>Júlio César NYC</title>
+    <link href="css/bootstrap5.min.css" rel="stylesheet">
+    <link href="css/business-casual.css" rel="stylesheet">
+    <link href="css/header-footer.css?v=2" rel="stylesheet">
+    <link href="css/layout.css?v=2" rel="stylesheet">
+    <link href="css/collection-view.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <meta name="description" content="Júlio César NYC - Exclusive haute couture collection">
+    <meta property="og:title" content="Júlio César NYC">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="css/glightbox.min.css" />
+    <script src="js/translation-system.js"></script>
+    <script src="js/collections-loader.js"></script>
+    <script src="custom.js?v=2"></script>
+</head>
+<body>
+    <my-header></my-header>
+
+    <!-- Collection Header -->
+    <div class="container" id="collection-header">
+        <div class="box">
+            <div class="col-lg-12">
+                <h4><strong id="collection-title">Loading...</strong></h4>
+                <p class="collection-season" id="collection-season"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero / Description -->
+    <div class="container" id="collection-hero">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-shadow" id="hero-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pieces Grid -->
+    <div class="container">
+        <div class="row" id="pieces-grid"></div>
+    </div>
+
+    <!-- Blueimp Gallery -->
+        <h3 class="title"></h3>
+        <a class="prev">‹</a>
+        <a class="next">›</a>
+        <a class="close">×</a>
+        <a class="play-pause"></a>
+        <ol class="indicator"></ol>
+    </div>
+
+    <my-footer></my-footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="js/bootstrap5.bundle.min.js"></script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const collectionId = urlParams.get('id');
+
+        if (!collectionId) {
+            window.location.href = 'collection.html';
+            return;
+        }
+
+        try {
+            const response = await fetch('data/collections.json');
+            const data = await response.json();
+            const collection = data.collections.find(c => c.id === collectionId || c.slug === collectionId);
+
+            if (!collection) {
+                document.getElementById('collection-title').textContent = 'Collection not found';
+                return;
+            }
+
+            // Detect language
+            const lang = localStorage.getItem('language') ||
+                         new URLSearchParams(window.location.search).get('lang') ||
+                         'en';
+            const isPt = lang === 'pt';
+
+            // Set page title
+            const name = isPt ? collection.namePt : collection.nameEn;
+            document.title = name + ' - Júlio César NYC';
+            document.getElementById('collection-title').textContent = name;
+            document.getElementById('collection-season').textContent =
+                isPt ? collection.seasonPt : collection.season;
+
+            // Set meta tags
+            document.querySelector('meta[name="description"]').content =
+                isPt ? collection.descriptionPt : collection.descriptionEn;
+
+            // Render hero
+            const heroContainer = document.getElementById('hero-container');
+            if (collection.heroImage) {
+                heroContainer.innerHTML = `
+                    <a class="glightbox" data-gallery="collection" href="${collection.heroImage}" title="${name}">
+                        <img class="img-fluid" src="${collection.heroImage}" alt="${name} - Hero" loading="eager" />
+                    </a>
+                    <div class="box-texto">
+                        <p style="font-size: unset;">${isPt ? collection.descriptionPt : collection.descriptionEn}</p>
+                    </div>
+                `;
+            }
+
+            // Try loading piece-level data
+            let pieces = collection.images || [];
+
+            // If no pieces in collections.json, try pieces-extracted.json
+            if (pieces.length === 0 || pieces.every(p => !p.descriptionEn || p.descriptionEn.startsWith('Look '))) {
+                try {
+                    const piecesResponse = await fetch('data/pieces-extracted.json');
+                    const piecesData = await piecesResponse.json();
+                    const collectionPieces = piecesData.find(c => c.collectionId === collectionId);
+                    if (collectionPieces && collectionPieces.pieces.length > 0) {
+                        pieces = collectionPieces.pieces;
+                    }
+                } catch (e) {
+                    // pieces-extracted.json may not exist yet
+                }
+            }
+
+            // If still no pieces, auto-discover from imageDir
+            if (pieces.length === 0 && collection.imageDir) {
+                // Fallback: generate numbered image list
+                for (let i = 1; i <= 30; i++) {
+                    const padded = i.toString().padStart(2, '0');
+                    pieces.push({
+                        file: `${collection.imageDir}/${padded}.jpg`,
+                        descriptionEn: `Look ${i}`,
+                        descriptionPt: `Look ${i}`
+                    });
+                }
+            }
+
+            // Render pieces grid
+            const grid = document.getElementById('pieces-grid');
+            pieces.forEach((piece, index) => {
+                const desc = isPt ? (piece.descriptionPt || piece.descriptionEn) : piece.descriptionEn;
+                const file = piece.file;
+
+                const pieceHTML = `
+                    <div class="col-md-4">
+                        <div class="box-shadow">
+                            <a class="glightbox" data-gallery="collection" href="${file}" title="${desc}">
+                                <img class="img-fluid" src="${file}" alt="${name} - ${desc}" loading="${index < 3 ? 'eager' : 'lazy'}" />
+                            </a>
+                            <div class="box-texto">
+                                <p class="textofoto">${desc}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                grid.insertAdjacentHTML('beforeend', pieceHTML);
+            });
+
+        } catch (error) {
+            console.error('Failed to load collection:', error);
+            document.getElementById('collection-title').textContent = 'Error loading collection';
+        }
+    });
+    </script>
+<script src="js/glightbox.min.js"></script>
+<script>
+document.querySelectorAll(".glightbox").forEach(function(el) {
+  var texto = el.closest(".box-shadow");
+  if (texto) {
+    var desc = texto.querySelector(".textofoto");
+    if (desc) el.setAttribute("data-description", desc.textContent.trim());
+  }
+});
+const lightbox = GLightbox({selector: ".glightbox", touchNavigation: true, loop: true, closeOnOutsideClick: true});
+</script>
+</body>
+</html>

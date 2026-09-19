@@ -1,0 +1,136 @@
+/* Header Navigation Styles */
+.navbar {
+    background-color: #1c1c1b;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+    padding: 0;
+}
+
+.navbar-dark .navbar-toggler {
+    border-color: rgba(255,255,255,0.3);
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Logo */
+.logo-row {
+    padding: 20px 0 12px;
+}
+
+.nav-logo {
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+}
+
+/* Desktop nav links row */
+.nav-row {
+    padding: 8px 0;
+}
+
+.nav-row .navbar-nav {
+    gap: 0;
+}
+
+.nav-link {
+    color: #ffffff !important;
+    text-transform: uppercase;
+    font-weight: 100;
+    letter-spacing: 3px;
+    font-size: 0.8em;
+    padding: 8px 15px !important;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    color: #cc0000 !important;
+}
+
+/* Dropdown */
+.dropdown-menu {
+    background-color: #1c1c1b;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.dropdown-item {
+    color: #ffffff;
+    padding: 8px 20px;
+}
+
+.dropdown-item:hover {
+    background-color: #2a2a2a;
+    color: #cc0000;
+}
+
+/* Mobile brand */
+.navbar-brand {
+    color: #ffffff !important;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 1em;
+    font-weight: 300;
+}
+
+/* Offcanvas Mobile Menu */
+.offcanvas {
+    background-color: #1c1c1b;
+    max-width: 280px;
+}
+
+.offcanvas-header {
+    border-bottom: 1px solid #cc0000;
+}
+
+.offcanvas-title {
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.offcanvas-body .nav-link {
+    font-size: 0.95em;
+    padding: 12px 0 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.offcanvas-body .nav-link:hover {
+    color: #cc0000 !important;
+    padding-left: 8px !important;
+}
+
+.mobile-social .fa-brands {
+    font-size: 22px;
+    padding: 12px;
+}
+
+/* Footer Styles */
+.fa-brands {
+    padding: 20px;
+    font-size: 30px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 50%;
+    color: #999999;
+    transition: 0.3s;
+}
+
+.fa-brands:hover {
+    opacity: 0.8;
+    color: #cc0000;
+    transition: 0.3s;
+}
+
+.rodape {
+    background-color: #1c1c1b;
+    border-top: 2px solid #cc0000;
+    padding-top: 30px;
+}
+
+.rodape p {
+    color: #ffffff;
+    margin-top: 15px;
+}

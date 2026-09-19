@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin - Júlio César NYC</title>
+    <link href="css/bootstrap5.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #1c1c1b;
+            --bg-card: #242424;
+            --bg-input: #2a2a2a;
+            --border: #333;
+            --text: #ffffff;
+            --text-muted: #999;
+            --accent: #cc0000;
+            --accent-hover: #ff1a1a;
+        }
+        * { box-sizing: border-box; }
+        body { background: var(--bg); color: var(--text); font-family: 'Montserrat', sans-serif, Arial; margin: 0; min-height: 100vh; }
+
+        /* Header */
+        .adm-header { background: #111; border-bottom: 2px solid var(--accent); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+        .adm-header h1 { font-size: 1.1em; font-weight: 300; letter-spacing: 3px; margin: 0; }
+        .adm-header h1 span { color: var(--accent); }
+        .adm-header a { color: var(--text-muted); text-decoration: none; font-size: 0.82em; }
+
+        /* Nav */
+        .adm-nav { background: #181818; border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; gap: 0; overflow-x: auto; }
+        .adm-nav button { background: none; border: none; border-bottom: 2px solid transparent; color: var(--text-muted); padding: 12px 18px; font-size: 0.82em; letter-spacing: 1px; cursor: pointer; white-space: nowrap; transition: all .2s; font-family: inherit; }
+        .adm-nav button:hover { color: var(--text); }
+        .adm-nav button.active { color: var(--text); border-bottom-color: var(--accent); }
+
+        /* Content */
+        .adm-body { max-width: 1100px; margin: 28px auto; padding: 0 18px; }
+        .adm-section { display: none; }
+        .adm-section.active { display: block; }
+
+        /* Cards */
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 4px; padding: 22px; margin-bottom: 18px; }
+        .card h3 { font-size: .9em; font-weight: 400; letter-spacing: 2px; color: var(--accent); margin: 0 0 18px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+
+        /* Forms */
+        label { display: block; font-size: .78em; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 4px; }
+        input[type=text], input[type=url], input[type=email], input[type=tel], input[type=password], textarea, select {
+            width: 100%; background: var(--bg-input); border: 1px solid var(--border); color: var(--text);
+            padding: 9px 11px; border-radius: 3px; font-family: inherit; font-size: .88em; margin-bottom: 14px; transition: border-color .2s;
+        }
+        input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); }
+        textarea { resize: vertical; min-height: 110px; }
+
+        /* Buttons */
+        .btn-a  { background: var(--accent); color: #fff; border: none; padding: 9px 20px; border-radius: 3px; font-family: inherit; font-size: .82em; letter-spacing: 1px; cursor: pointer; transition: background .2s; }
+        .btn-a:hover { background: var(--accent-hover); }
+        .btn-o  { background: transparent; color: var(--text-muted); border: 1px solid var(--border); padding: 9px 20px; border-radius: 3px; font-family: inherit; font-size: .82em; cursor: pointer; transition: all .2s; }
+        .btn-o:hover { border-color: var(--text); color: var(--text); }
+        .btn-sm { padding: 5px 12px; font-size: .78em; }
+        .btn-del { background: transparent; color: var(--accent); border: 1px solid #550000; padding: 5px 12px; border-radius: 3px; font-family: inherit; font-size: .78em; cursor: pointer; transition: all .2s; }
+        .btn-del:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+        /* Login */
+        #login-overlay { position: fixed; inset: 0; background: #111; display: flex; align-items: center; justify-content: center; z-index: 999; }
+        .login-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px; padding: 40px; width: 340px; text-align: center; }
+        .login-box h2 { font-size: 1em; letter-spacing: 3px; color: var(--accent); margin-bottom: 24px; font-weight: 300; }
+        .login-box input { text-align: center; }
+        .login-error { color: var(--accent); font-size: .82em; margin-top: 8px; min-height: 20px; }
+
+        /* Collection list */
+        .col-item { display: flex; align-items: center; gap: 14px; padding: 11px 0; border-bottom: 1px solid var(--border); }
+        .col-item:last-child { border-bottom: none; }
+        .col-item .info { flex: 1; }
+        .col-item .info h5 { margin: 0 0 2px; font-size: .88em; font-weight: 400; }
+        .col-item .info p  { margin: 0; font-size: .78em; color: var(--text-muted); }
+
+        /* Piece editor */
+        .piece-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 14px; margin-bottom: 18px; }
+        .piece-card { background: var(--bg-input); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; position: relative; cursor: grab; transition: border-color .2s; }
+        .piece-card:hover { border-color: #555; }
+        .piece-card.dragging { opacity: .4; border-color: var(--accent); cursor: grabbing; }
+        .piece-card.drag-over { border-color: var(--accent); border-style: dashed; }
+        .piece-card img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; pointer-events: none; }
+        .piece-card img.no-img { aspect-ratio: 3/4; background: #333; display: flex; align-items: center; justify-content: center; }
+        .piece-card .piece-body { padding: 9px; }
+        .piece-card .piece-desc { width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 6px 8px; border-radius: 3px; font-size: .78em; font-family: inherit; resize: vertical; min-height: 55px; margin-bottom: 7px; }
+        .piece-card .piece-desc:focus { outline: none; border-color: var(--accent); }
+        .piece-card .piece-actions { display: flex; gap: 6px; }
+        .piece-card .drag-handle { position: absolute; top: 6px; left: 6px; background: rgba(0,0,0,.6); color: #fff; padding: 2px 6px; border-radius: 3px; font-size: .72em; cursor: grab; }
+        .piece-card .piece-num { position: absolute; top: 6px; right: 6px; background: rgba(0,0,0,.7); color: #aaa; padding: 2px 7px; border-radius: 3px; font-size: .72em; }
+
+        /* Upload zone */
+        .upload-zone { border: 2px dashed var(--border); border-radius: 4px; padding: 26px; text-align: center; cursor: pointer; transition: border-color .2s; margin-bottom: 14px; }
+        .upload-zone:hover, .upload-zone.dragover { border-color: var(--accent); }
+        .upload-zone p { color: var(--text-muted); margin: 0; font-size: .84em; }
+        .upload-zone input { display: none; }
+
+        /* About photos */
+        .about-photos { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+        .about-photo { position: relative; width: 120px; }
+        .about-photo img { width: 120px; height: 160px; object-fit: cover; border-radius: 3px; border: 1px solid var(--border); display: block; }
+        .about-photo .del { position: absolute; top: 4px; right: 4px; background: rgba(204,0,0,.9); color: #fff; border: none; width: 22px; height: 22px; border-radius: 50%; font-size: 14px; cursor: pointer; line-height: 1; display: flex; align-items: center; justify-content: center; }
+
+        /* Toast */
+        .toast-area { position: fixed; top: 18px; right: 18px; z-index: 9999; }
+        .toast-msg { background: #1a7a1a; color: #fff; padding: 11px 18px; border-radius: 4px; margin-bottom: 7px; font-size: .82em; animation: fadeUp .3s; }
+        .toast-msg.err { background: var(--accent); }
+        @keyframes fadeUp { from { opacity:0; transform: translateY(-10px); } to { opacity:1; transform: translateY(0); } }
+
+        /* Spinner */
+        .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,.3); border-top-color: #fff; border-radius: 50%; animation: spin .7s linear infinite; vertical-align: middle; margin-right: 6px; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        @media (max-width: 600px) {
+            .adm-header { padding: 11px 14px; }
+            .adm-nav { padding: 0 8px; }
+            .adm-nav button { padding: 10px 11px; font-size: .74em; }
+            .adm-body { padding: 0 10px; margin: 14px auto; }
+            .card { padding: 14px; }
+            .piece-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LOGIN OVERLAY -->
+<div id="login-overlay">
+    <div class="login-box">
+        <h2>ADMIN ACCESS</h2>
+        <label>Password</label>
+        <input type="password" id="login-pw" placeholder="Enter password" onkeydown="if(event.key==='Enter')doLogin()">
+        <button class="btn-a" style="width:100%;margin-top:4px;" onclick="doLogin()">Enter</button>
+        <div class="login-error" id="login-err"></div>
+    </div>
+</div>
+
+<!-- HEADER -->
+<div class="adm-header">
+    <h1><span>ADMIN</span> Júlio César NYC</h1>
+    <a href="index.html" target="_blank">View Site ↗</a>
+</div>
+
+<!-- NAV -->
+<div class="adm-nav">
+    <button class="active" onclick="showTab('carousel',this)">HOME CAROUSEL</button>
+    <button onclick="showTab('collections',this)">COLEÇÕES</button>
+    <button onclick="showTab('about',this)">ABOUT</button>
+    <button onclick="showTab('press',this)">PRESS</button>
+    <button onclick="showTab('contact',this)">CONTACT</button>
+</div>
+
+<!-- BODY -->
+<div class="adm-body">
+
+    <!-- ===== CAROUSEL ===== -->
+    <div id="tab-carousel" class="adm-section active">
+        <div class="card">
+            <h3>HOME CAROUSEL SLIDES</h3>
+            <div id="carousel-list"></div>
+            <div style="display:flex;gap:10px;margin-top:14px;">
+                <button class="btn-a" onclick="addSlide()">+ Add Slide</button>
+                <button class="btn-o" onclick="saveCarousel()">Save to index.html</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== COLLECTIONS ===== -->
+    <div id="tab-collections" class="adm-section">
+        <!-- List view -->
+        <div id="col-list-view">
+            <div class="card">
+                <h3>COLEÇÕES</h3>
+                <div id="col-list"></div>
+            </div>
+        </div>
+        <!-- Editor view -->
+        <div id="col-editor-view" style="display:none;">
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;">
+                <button class="btn-o btn-sm" onclick="showColList()">← Back</button>
+                <h2 style="margin:0;font-size:1.1em;font-weight:300;letter-spacing:2px;" id="col-editor-title"></h2>
+                <div style="margin-left:auto;display:flex;gap:10px;">
+                    <button class="btn-a" onclick="saveCollection()">
+                        <span class="spinner" id="save-spin" style="display:none;"></span>Save Changes
+                    </button>
+                    <a id="col-view-link" href="#" target="_blank" class="btn-o btn-sm" style="text-decoration:none;display:inline-flex;align-items:center;">View Page ↗</a>
+                </div>
+            </div>
+            <div class="card">
+                <h3>PIECES — drag to reorder</h3>
+                <div class="piece-grid" id="piece-grid"></div>
+                <div class="upload-zone" id="upload-zone" onclick="document.getElementById('piece-files').click()">
+                    <p>Click or drag photos here to add new pieces</p>
+                    <input type="file" id="piece-files" multiple accept="image/*" onchange="handlePieceFiles(this.files)">
+                </div>
+                <p style="color:var(--text-muted);font-size:.78em;margin:0;">After uploading, copy the photo to the correct <code>img/</code> folder on your server. The path will be pre-filled.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== ABOUT ===== -->
+    <div id="tab-about" class="adm-section">
+        <div class="card">
+            <h3>PROFILE PHOTOS</h3>
+            <div class="about-photos" id="about-photos"></div>
+            <div class="upload-zone" onclick="document.getElementById('about-files').click()">
+                <p>Click to add profile photos</p>
+                <input type="file" id="about-files" multiple accept="image/*" onchange="addAboutPhotos(this.files)">
+            </div>
+            <label>Photo Credit Name</label>
+            <input type="text" id="about-credit" placeholder="Lucas Candido">
+            <label>Photo Credit Link</label>
+            <input type="url" id="about-credit-url" placeholder="https://instagram.com/lucascandidofoto/">
+        </div>
+        <div class="card">
+            <h3>BIO — ENGLISH</h3>
+            <textarea id="about-bio-en" style="min-height:220px;"></textarea>
+        </div>
+        <div class="card">
+            <h3>BIO — PORTUGUÊS</h3>
+            <textarea id="about-bio-pt" style="min-height:220px;"></textarea>
+        </div>
+        <button class="btn-a" onclick="saveAbout()">Save About Page</button>
+    </div>
+
+    <!-- ===== PRESS ===== -->
+    <div id="tab-press" class="adm-section">
+        <div class="card">
+            <h3>PRESS ARTICLES</h3>
+            <p style="color:var(--text-muted);font-size:.82em;margin-bottom:14px;">Add new articles. Use "Save Changes" to write to press.html.</p>
+            <div id="press-list"></div>
+            <div style="border-top:1px solid var(--border);padding-top:16px;margin-top:8px;">
+                <h3 style="margin-bottom:14px;">ADD NEW ARTICLE</h3>
+                <label>Title</label>
+                <input type="text" id="press-title" placeholder="Article title">
+                <label>URL</label>
+                <input type="url" id="press-url" placeholder="https://...">
+                <label>Thumbnail URL</label>
+                <input type="url" id="press-thumb" placeholder="https://... (image URL)">
+                <button class="btn-a" onclick="addPressItem()">Add Article</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CONTACT ===== -->
+    <div id="tab-contact" class="adm-section">
+        <div class="card">
+            <h3>USA</h3>
+            <label>Phone</label><input type="tel" id="c-us-phone">
+            <label>Email</label><input type="email" id="c-us-email">
+            <label>Address</label><input type="text" id="c-us-addr">
+        </div>
+        <div class="card">
+            <h3>BRAZIL</h3>
+            <label>Phone</label><input type="tel" id="c-br-phone">
+            <label>Email</label><input type="email" id="c-br-email">
+            <label>Address</label><input type="text" id="c-br-addr">
+        </div>
+        <button class="btn-a" onclick="saveContact()">Save Contact</button>
+    </div>
+</div>
+
+<div class="toast-area" id="toasts"></div>
+
+<script>
+// ─── State ───────────────────────────────────────────────────────────────
+const API = 'admin-api.php';
+let TOKEN = localStorage.getItem('jcadmin_token') || '';
+let currentCol = null; // {key, name, file, pieces}
+
+// ─── Login ───────────────────────────────────────────────────────────────
+const LOCAL_PW = 'juliocesar2025'; // fallback for local dev (no PHP)
+
+async function doLogin() {
+    const pw = document.getElementById('login-pw').value;
+    // Try PHP backend first
+    try {
+        const r = await fetch(API + '?action=login', { method: 'POST', body: new URLSearchParams({password: pw}) });
+        if (r.ok && r.headers.get('content-type')?.includes('json')) {
+            const d = await r.json();
+            if (d.ok) {
+                TOKEN = d.token;
+                localStorage.setItem('jcadmin_token', TOKEN);
+                document.getElementById('login-overlay').style.display = 'none';
+                init(); return;
+            } else { document.getElementById('login-err').textContent = 'Wrong password'; return; }
+        }
+    } catch(e) {}
+    // Fallback: local password check (no PHP)
+    if (pw === LOCAL_PW) {
+        TOKEN = 'local';
+        localStorage.setItem('jcadmin_token', TOKEN);
+        document.getElementById('login-overlay').style.display = 'none';
+        init();
+    } else {
+        document.getElementById('login-err').textContent = 'Wrong password';
+    }
+}
+
+async function checkAuth() {
+    try {
+        const r = await fetch(API + '?action=list_collections');
+        if (r.status === 401) return false;
+        if (r.ok && r.headers.get('content-type')?.includes('json')) {
+            const d = await r.json();
+            return !!d.collections;
+        }
+    } catch(e) {}
+    return TOKEN === 'local'; // local dev mode
+}
+
+async function init() {
+    const ok = await checkAuth();
+    if (!ok) { document.getElementById('login-overlay').style.display = 'flex'; return; }
+    document.getElementById('login-overlay').style.display = 'none';
+    loadCarousel();
+    loadCollections();
+    loadAbout();
+    loadContact();
+    loadPress();
+}
+
+// ─── Tabs ─────────────────────────────────────────────────────────────────
+function showTab(name, btn) {
+    document.querySelectorAll('.adm-section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.adm-nav button').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    btn.classList.add('active');
+}
+
+// ─── Toast ────────────────────────────────────────────────────────────────
+function toast(msg, err) {
+    const el = document.createElement('div');
+    el.className = 'toast-msg' + (err ? ' err' : '');
+    el.textContent = msg;
+    document.getElementById('toasts').appendChild(el);
+    setTimeout(() => el.remove(), 3500);
+}
+
+// ─── CAROUSEL ─────────────────────────────────────────────────────────────
+const CAROUSEL_KEY = 'jcadmin_carousel';
+function loadCarousel() {
+    const saved = localStorage.getItem(CAROUSEL_KEY);
+    const slides = saved ? JSON.parse(saved) : getDefaultSlides();
+    renderCarousel(slides);
+}
+function getDefaultSlides() {
+    return [
+        { img:'img/tkos/13.jpg', title:'TKOS Collection', desc:'Slashed silk and cotton fitted jacket with Swarovski crystals', title_pt:'Coleção TKOS', desc_pt:'Jaqueta ajustada de seda e algodão com cristais Swarovski' },
+        { img:'img/tkos/06.jpg', title:'TKOS Collection', desc:'Color block fitted jacket with feather details', title_pt:'Coleção TKOS', desc_pt:'Jaqueta ajustada color block com detalhes em penas' },
+        { img:'img/tkos/05.jpg', title:'TKOS Collection', desc:'Silk brocade jacket with mother of pearl buttons', title_pt:'Coleção TKOS', desc_pt:'Jaqueta de brocado de seda com botões de madrepérola' },
+        { img:'img/tkos/capa.jpg', title:'The Kindness of Strangers', desc:'Latest Collection', title_pt:'A Gentileza dos Estranhos', desc_pt:'Coleção Mais Recente' },
+        { img:'img/tkos/17.jpg', title:'TKOS Collection', desc:'Viscose lavallière maxi dress with faux fur coat', title_pt:'Coleção TKOS', desc_pt:'Vestido maxi lavallière de viscose com casaco de pele sintética' }
+    ];
+}
+function getSlides() {
+    const saved = localStorage.getItem(CAROUSEL_KEY);
+    return saved ? JSON.parse(saved) : getDefaultSlides();
+}
+function setSlides(s) { localStorage.setItem(CAROUSEL_KEY, JSON.stringify(s)); }
+
+function renderCarousel(slides) {
+    setSlides(slides);
+    document.getElementById('carousel-list').innerHTML = slides.map((s, i) => `
+        <div class="col-item">
+            <img src="${s.img}" style="width:58px;height:58px;object-fit:cover;border-radius:3px;background:#333;" onerror="this.style.background='#333'">
+            <div class="info">
+                <h5>${s.title || '(no title)'}</h5>
+                <p>${s.desc || ''}</p>
+            </div>
+            <div style="display:flex;gap:7px;">
+                <button class="btn-o btn-sm" onclick="editSlide(${i})">Edit</button>
+                <button class="btn-del btn-sm" onclick="removeSlide(${i})">Remove</button>
+            </div>
+        </div>
+    `).join('');
+}
+
+function addSlide() { const s = getSlides(); s.push({img:'',title:'',desc:'',title_pt:'',desc_pt:''}); renderCarousel(s); editSlide(s.length-1); }
+function removeSlide(i) { if(!confirm('Remove slide?')) return; const s=getSlides(); s.splice(i,1); renderCarousel(s); toast('Slide removed'); }
+
+function editSlide(i) {
+    const s = getSlides();
+    const sl = s[i];
+    document.getElementById('carousel-list').innerHTML = `
+        <div class="card" style="border-color:var(--accent);margin:0;">
+            <h3>EDITING SLIDE ${i+1}</h3>
+            <div class="row">
+                <div class="col-md-6"><label>Image path</label><input id="sl-img" type="text" value="${sl.img}" placeholder="img/tkos/13.jpg"></div>
+                <div class="col-md-6" style="padding-top:22px;"><img id="sl-preview" src="${sl.img}" style="height:80px;border-radius:3px;" onerror="this.style.display='none'"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"><label>Title (EN)</label><input id="sl-title" type="text" value="${sl.title}"></div>
+                <div class="col-md-6"><label>Title (PT)</label><input id="sl-title-pt" type="text" value="${sl.title_pt||''}"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"><label>Description (EN)</label><input id="sl-desc" type="text" value="${sl.desc}"></div>
+                <div class="col-md-6"><label>Description (PT)</label><input id="sl-desc-pt" type="text" value="${sl.desc_pt||''}"></div>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:4px;">
+                <button class="btn-a" onclick="saveSlide(${i})">Save Slide</button>
+                <button class="btn-o" onclick="loadCarousel()">Cancel</button>
+            </div>
+        </div>
+    `;
+    document.getElementById('sl-img').addEventListener('input', function(){ document.getElementById('sl-preview').src=this.value; });
+}
+
+function saveSlide(i) {
+    const s = getSlides();
+    s[i] = { img: document.getElementById('sl-img').value, title: document.getElementById('sl-title').value, desc: document.getElementById('sl-desc').value, title_pt: document.getElementById('sl-title-pt').value, desc_pt: document.getElementById('sl-desc-pt').value };
+    renderCarousel(s);
+    toast('Slide saved');
+}
+
+function saveCarousel() {
+    const slides = getSlides();
+    const ind = slides.map((_, i) => `            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="${i}"${i===0?' class="active" aria-current="true"':''} aria-label="Slide ${i+1}"></button>`).join('\n');
+    const items_en = slides.map((s,i) => `            <div class="carousel-item${i===0?' active':''}">
+                <img src="${s.img}" class="d-block w-100" alt="${s.title}">
+                <div class="carousel-caption"><h3>${s.title}</h3><p>${s.desc}</p></div>
+            </div>`).join('\n');
+    const items_pt = slides.map((s,i) => `            <div class="carousel-item${i===0?' active':''}">
+                <img src="${s.img}" class="d-block w-100" alt="${s.title_pt||s.title}">
+                <div class="carousel-caption"><h3>${s.title_pt||s.title}</h3><p>${s.desc_pt||s.desc}</p></div>
+            </div>`).join('\n');
+    // Show generated HTML for copying
+    const out = `<!-- index.html carousel indicators -->\n${ind}\n\n<!-- index.html carousel items (EN) -->\n${items_en}\n\n<!-- index_pt.html carousel items (PT) -->\n${items_pt}`;
+    const ta = document.createElement('textarea');
+    ta.value = out; ta.style.cssText = 'position:fixed;top:60px;left:50%;transform:translateX(-50%);width:700px;max-width:95vw;height:400px;z-index:999;background:#1a1a1a;color:#eee;border:2px solid #cc0000;border-radius:6px;padding:14px;font-size:.8em;';
+    ta.title = 'Copy this HTML and paste into index.html and index_pt.html';
+    document.body.appendChild(ta);
+    ta.select();
+    const close = document.createElement('button');
+    close.textContent = '✕ Close'; close.className='btn-a'; close.style.cssText='position:fixed;top:30px;left:50%;transform:translateX(-50%);z-index:1000;';
+    close.onclick = () => { ta.remove(); close.remove(); };
+    document.body.appendChild(close);
+    toast('Carousel HTML generated — copy and paste into index.html');
+}
+
+// ─── COLLECTIONS ─────────────────────────────────────────────────────────
+const LOCAL_COLLECTIONS = [
+    {key:'tkos',name:'The Kindness of Strangers',file:'tkos.html',has_descriptions:true},
+    {key:'tkos_pt',name:'A Gentileza dos Estranhos (PT)',file:'tkos_pt.html',has_descriptions:true},
+    {key:'wanderlust',name:'Wanderlust',file:'wanderlust.html',has_descriptions:true},
+    {key:'wanderlust_pt',name:'Wanderlust (PT)',file:'wanderlust_pt.html',has_descriptions:true},
+    {key:'soft-seduction',name:'Soft Seduction',file:'soft-seduction.html',has_descriptions:true},
+    {key:'soft-seduction_pt',name:'Soft Seduction (PT)',file:'soft-seduction_pt.html',has_descriptions:true},
+    {key:'sampa-sp',name:'Fall/Winter 2023',file:'sampa-sp.html',has_descriptions:true},
+    {key:'sampa-sp_pt',name:'Fall/Winter 2023 (PT)',file:'sampa-sp_pt.html',has_descriptions:true},
+    {key:'rio',name:'Fall/Winter 2022',file:'rio.html',has_descriptions:true},
+    {key:'rio_pt',name:'Fall/Winter 2022 (PT)',file:'rio_pt.html',has_descriptions:true},
+    {key:'colors-and-devotion',name:'Colors and Devotion',file:'colors-and-devotion.html',has_descriptions:true},
+    {key:'colors-and-devotion_pt',name:'Colors and Devotion (PT)',file:'colors-and-devotion_pt.html',has_descriptions:true},
+    {key:'land-of-plenty',name:'Land of Plenty',file:'land-of-plenty.html',has_descriptions:true},
+    {key:'gentle_stillness',name:'Gentle Stillness',file:'gentle_stillness.html',has_descriptions:true},
+    {key:'gentle_stillness_pt',name:'Gentle Stillness (PT)',file:'gentle_stillness_pt.html',has_descriptions:true},
+    {key:'reflections',name:'Reflections',file:'reflections.html',has_descriptions:true},
+    {key:'touchingfromadistance',name:'Touching from a Distance',file:'touchingfromadistance.html',has_descriptions:true},
+    {key:'polymath',name:'Polymath',file:'polymath.html',has_descriptions:true},
+    {key:'sp2019',name:'Spring/Summer 2019',file:'sp2019.html',has_descriptions:true},
+    {key:'ciclo',name:'Ciclo',file:'ciclo.html',has_descriptions:false},
+    {key:'ciclo-en',name:'Ciclo (EN)',file:'ciclo-en.html',has_descriptions:false},
+];
+
+async function loadCollections() {
+    let collections = LOCAL_COLLECTIONS;
+    try {
+        const r = await fetch(API + '?action=list_collections');
+        if (r.ok && r.headers.get('content-type')?.includes('json')) {
+            const d = await r.json();
+            if (d.collections) collections = d.collections;
+        }
+    } catch(e) {}
+    if (!collections) return;
+    document.getElementById('col-list').innerHTML = collections.map(c => `
+        <div class="col-item">
+            <div class="info">
+                <h5>${c.name}</h5>
+                <p>${c.file}</p>
+            </div>
+            <div style="display:flex;gap:7px;">
+                <button class="btn-a btn-sm" onclick="openColEditor('${c.key}')">Edit Pieces</button>
+                <a href="${c.file}" target="_blank" class="btn-o btn-sm" style="text-decoration:none;display:inline-flex;align-items:center;">View ↗</a>
+            </div>
+        </div>
+    `).join('');
+}
+
+function parseLocalPieces(html, hasDesc) {
+    const pieces = [];
+    if (hasDesc) {
+        // Match box-shadow blocks
+        const re = /<div class="box-shadow">([\s\S]*?)<\/div>\s*<\/div>/g;
+        let m;
+        while ((m = re.exec(html)) !== null) {
+            const block = m[1];
+            const href = (block.match(/href="([^"]+)"/) || [])[1] || '';
+            const src  = (block.match(/src="([^"]+)"/) || [])[1] || href;
+            const desc = (block.match(/<p class="textofoto">([\s\S]*?)<\/p>/) || [])[1] || '';
+            if (href) pieces.push({ href, src, desc: desc.replace(/<[^>]+>/g,'').trim() });
+        }
+    } else {
+        const re = /<a href="([^"]+)"[^>]*class="glightbox"[^>]*>[\s\S]*?<img src="([^"]+)"[^>]*>[\s\S]*?<\/a>/gi;
+        let m;
+        while ((m = re.exec(html)) !== null) {
+            pieces.push({ href: m[1], src: m[2], desc: '' });
+        }
+    }
+    return pieces;
+}
+
+async function openColEditor(key) {
+    document.getElementById('col-list-view').style.display = 'none';
+    document.getElementById('col-editor-view').style.display = 'block';
+    document.getElementById('col-editor-title').textContent = 'Loading…';
+    document.getElementById('piece-grid').innerHTML = '<p style="color:var(--text-muted);">Loading pieces…</p>';
+
+    const colMeta = LOCAL_COLLECTIONS.find(c => c.key === key) || {key, file: key+'.html', name: key, has_descriptions: true};
+
+    // Try PHP backend
+    try {
+        const r = await fetch(`${API}?action=get_collection&key=${encodeURIComponent(key)}`);
+        if (r.ok && r.headers.get('content-type')?.includes('json')) {
+            const d = await r.json();
+            if (!d.error) {
+                currentCol = d;
+                document.getElementById('col-editor-title').textContent = d.name;
+                document.getElementById('col-view-link').href = d.file;
+                renderPieces(d.pieces);
+                return;
+            }
+        }
+    } catch(e) {}
+
+    // Fallback: fetch and parse HTML directly (read-only on local dev)
+    try {
+        const r = await fetch(colMeta.file + '?nocache=' + Date.now());
+        const html = await r.text();
+        const pieces = parseLocalPieces(html, colMeta.has_descriptions);
+        currentCol = { key, name: colMeta.name, file: colMeta.file, pieces, has_descriptions: colMeta.has_descriptions, localMode: true };
+        document.getElementById('col-editor-title').textContent = colMeta.name + ' (local preview)';
+        document.getElementById('col-view-link').href = colMeta.file;
+        renderPieces(pieces);
+        toast('Local mode — Save requires PHP on the server', false);
+    } catch(e) {
+        toast('Could not load collection: ' + e.message, true);
+    }
+}
+
+function showColList() {
+    document.getElementById('col-list-view').style.display = 'block';
+    document.getElementById('col-editor-view').style.display = 'none';
+    currentCol = null;
+}
+
+function renderPieces(pieces) {
+    currentCol.pieces = pieces;
+    const grid = document.getElementById('piece-grid');
+    grid.innerHTML = '';
+    pieces.forEach((p, i) => {
+        const card = document.createElement('div');
+        card.className = 'piece-card';
+        card.draggable = true;
+        card.dataset.idx = i;
+        card.innerHTML = `
+            <div class="drag-handle">☰</div>
+            <div class="piece-num">#${i+1}</div>
+            <img src="${p.src}" alt="" onerror="this.style.background='#333';this.style.minHeight='120px'">
+            <div class="piece-body">
+                ${p.src ? `<div style="font-size:.72em;color:var(--text-muted);margin-bottom:5px;word-break:break-all;">${p.src}</div>` : ''}
+                ${currentCol.has_descriptions !== false ? `
+                <textarea class="piece-desc" placeholder="Description of this piece…" onchange="currentCol.pieces[${i}].desc=this.value">${escHtml(p.desc)}</textarea>` : ''}
+                <div class="piece-actions">
+                    <button class="btn-del btn-sm" onclick="removePiece(${i})">Remove</button>
+                </div>
+            </div>
+        `;
+        // Drag events
+        card.addEventListener('dragstart', e => { e.dataTransfer.setData('text/plain', i); card.classList.add('dragging'); });
+        card.addEventListener('dragend', () => card.classList.remove('dragging'));
+        card.addEventListener('dragover', e => { e.preventDefault(); card.classList.add('drag-over'); });
+        card.addEventListener('dragleave', () => card.classList.remove('drag-over'));
+        card.addEventListener('drop', e => {
+            e.preventDefault(); card.classList.remove('drag-over');
+            const from = parseInt(e.dataTransfer.getData('text/plain'));
+            const to = parseInt(card.dataset.idx);
+            if (from !== to) {
+                const arr = currentCol.pieces;
+                const [moved] = arr.splice(from, 1);
+                arr.splice(to, 0, moved);
+                renderPieces(arr);
+            }
+        });
+        grid.appendChild(card);
+    });
+
+    // Upload zone drag-over
+    const uz = document.getElementById('upload-zone');
+    uz.addEventListener('dragover', e => { e.preventDefault(); uz.classList.add('dragover'); });
+    uz.addEventListener('dragleave', () => uz.classList.remove('dragover'));
+    uz.addEventListener('drop', e => { e.preventDefault(); uz.classList.remove('dragover'); handlePieceFiles(e.dataTransfer.files); });
+}
+
+function escHtml(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function removePiece(i) {
+    if (!confirm('Remove piece #' + (i+1) + '?')) return;
+    currentCol.pieces.splice(i, 1);
+    renderPieces(currentCol.pieces);
+    toast('Piece removed (not saved yet)');
+}
+
+function handlePieceFiles(files) {
+    for (const f of files) {
+        const url = URL.createObjectURL(f);
+        // Guess the path based on collection key
+        const colKey = currentCol.key.replace(/_pt$/, '');
+        const existingNums = currentCol.pieces.map(p => {
+            const m = (p.src||'').match(/\/(\d+)\.\w+$/);
+            return m ? parseInt(m[1]) : 0;
+        });
+        const nextNum = (existingNums.length ? Math.max(...existingNums) : 0) + 1;
+        const ext = f.name.split('.').pop().toLowerCase();
+        const suggestedPath = `img/${colKey}/${nextNum}.${ext}`;
+        currentCol.pieces.push({ href: suggestedPath, src: url, desc: '', _localFile: f, _suggestedPath: suggestedPath });
+    }
+    renderPieces(currentCol.pieces);
+    toast(`${files.length} photo(s) added — remember to upload files to the server!`);
+}
+
+async function saveCollection() {
+    if (!currentCol) return;
+    const spin = document.getElementById('save-spin');
+    spin.style.display = 'inline-block';
+
+    // Sync textarea values into pieces
+    document.querySelectorAll('.piece-desc').forEach((ta, i) => {
+        if (currentCol.pieces[i]) currentCol.pieces[i].desc = ta.value;
+    });
+
+    // Replace blob URLs with suggested paths
+    const pieces = currentCol.pieces.map(p => ({
+        href: p._suggestedPath || p.href,
+        src:  p._suggestedPath || p.src,
+        desc: p.desc || ''
+    }));
+
+    const r = await fetch(API + '?action=save_collection', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'X-Admin-Token': TOKEN },
+        body: JSON.stringify({ key: currentCol.key, pieces })
+    });
+    const d = await r.json();
+    spin.style.display = 'none';
+    if (d.ok) {
+        toast('✓ Collection saved to ' + currentCol.file);
+        currentCol.pieces = pieces;
+        // Reload to confirm
+        setTimeout(() => openColEditor(currentCol.key), 800);
+    } else {
+        toast(d.error || 'Save failed', true);
+    }
+}
+
+// ─── ABOUT ───────────────────────────────────────────────────────────────
+const ABOUT_KEY = 'jcadmin_about';
+function loadAbout() {
+    const saved = localStorage.getItem(ABOUT_KEY);
+    const data = saved ? JSON.parse(saved) : {
+        photos: ['img/profile.jpeg','img/profile1.jpeg','img/profile2.jpeg'],
+        credit: 'Lucas Candido',
+        creditUrl: 'https://www.instagram.com/lucascandidofoto/',
+        bio_en: `Júlio César, originally from Mossoró, Brazil, has always had a passion for the arts, particularly music, books, and painting. His deep connection to regional folklore art has influenced his artistic journey from an early age.\n\nSince moving to the U.S. in 1993, Júlio has thrived in the fashion industry for over 30 years, showcasing his unique talents in collage on fabric. His creations, known for their strength, vibrancy, and originality, have been featured in prestigious venues like the New Museum and various New York City fashion shows.\n\nJúlio established himself as a respected figure in fashion by pioneering his own techniques. His artworks are characterized by strength, vibrant colors, and captivating designs, emphasizing quality and originality that are immediately apparent.\n\nThroughout his career, Júlio has crafted sophisticated and innovative pieces for various notable figures and institutions in the U.S. These include Koos Van Den Akker, Sherry Bronfman, Lauren Hutton, Alyce Santoro, Schaumburg Center, Desingtex, The New Museum, Joan Hardy Clark, and Zenobia Lee. In Brazil, Júlio has collaborated with Lia de Itamaracá, Pinga Store, Casa de Antonia, Teresa Cristina, and Martinho da Vila.\n\nAmong his many collaborations, Júlio holds his partnership with Vogue Patterns in high esteem, considering it one of his most robust and fulfilling collaborations.\n\nCurrently dividing his time between Brazil and New York with his partner, Júlio draws inspiration from his diverse interests, travels, and the support of loved ones, continuing to evolve as an artist driven by quality and innovation.`,
+        bio_pt: `Júlio César, natural de Mossoró/RN, sempre teve paixão pelas artes, principalmente pela música, livros e pintura. A sua profunda ligação à arte folclórica regional influenciou desde cedo o seu percurso artístico.\n\nDesde que se mudou para os EUA, em 1993, Júlio tem prosperado na indústria da moda há mais de 30 anos, mostrando o seu talento único na colagem em tecido. Suas criações, conhecidas pela sua força, vibração e originalidade, foram apresentadas em locais de prestígio, como o New Museum e em vários desfiles de moda em Nova York.\n\nJúlio se consolidou como uma figura respeitada na moda ao ser pioneiro em suas próprias técnicas. Suas obras são caracterizadas pela força, cores vibrantes e designs cativantes, enfatizando a qualidade e a originalidade que são imediatamente aparentes.\n\nAo longo da sua carreira, Júlio criou peças sofisticadas e inovadoras para diversas figuras e instituições notáveis nos EUA. Estas incluem, Koos Van Den Akker, Sherry Bronfman, Lauren Hutton, Alyce Santoro, Schaumburg Center, Desingtex, The New Museum, Joan Hardy Clark, e Zenobia Lee. No Brasil, Júlio possui várias colaborações, entre elas, Lia de Itamaracá, Pinga Store, Casa de Antonia, Teresa Cristina e Martinho da Vila.\n\nEntre as suas muitas colaborações, Júlio tem em alta estima a parceria com a Vogue Patterns considerando a uma das suas colaborações mais robustas e gratificantes.\n\nAtualmente dividindo seu tempo entre o Brasil e Nova York com seu parceiro, Júlio se inspira em seus diversos interesses, viajando e apoiando entes queridos, continuando a evoluir como um artista movido pela qualidade e inovação.`
+    };
+    renderAboutPhotos(data.photos);
+    document.getElementById('about-credit').value = data.credit;
+    document.getElementById('about-credit-url').value = data.creditUrl;
+    document.getElementById('about-bio-en').value = data.bio_en;
+    document.getElementById('about-bio-pt').value = data.bio_pt;
+}
+function renderAboutPhotos(photos) {
+    document.getElementById('about-photos').innerHTML = photos.map((p,i) => `
+        <div class="about-photo">
+            <img src="${p}" onerror="this.style.background='#333'">
+            <button class="del" onclick="removeAboutPhoto(${i})">×</button>
+        </div>
+    `).join('');
+}
+function removeAboutPhoto(i) {
+    const saved = localStorage.getItem(ABOUT_KEY);
+    const data = saved ? JSON.parse(saved) : {};
+    data.photos = data.photos || [];
+    data.photos.splice(i, 1);
+    localStorage.setItem(ABOUT_KEY, JSON.stringify(data));
+    renderAboutPhotos(data.photos);
+}
+function addAboutPhotos(files) {
+    const saved = localStorage.getItem(ABOUT_KEY);
+    const data = saved ? JSON.parse(saved) : {};
+    data.photos = data.photos || [];
+    for (const f of files) data.photos.push('img/' + f.name);
+    localStorage.setItem(ABOUT_KEY, JSON.stringify(data));
+    renderAboutPhotos(data.photos);
+    toast('Photo paths added. Upload the actual files to img/ on the server.');
+}
+function saveAbout() {
+    const saved = localStorage.getItem(ABOUT_KEY);
+    const data = saved ? JSON.parse(saved) : {};
+    data.credit    = document.getElementById('about-credit').value;
+    data.creditUrl = document.getElementById('about-credit-url').value;
+    data.bio_en    = document.getElementById('about-bio-en').value;
+    data.bio_pt    = document.getElementById('about-bio-pt').value;
+    localStorage.setItem(ABOUT_KEY, JSON.stringify(data));
+
+    // Build about.html paragraphs
+    const makeParagraphs = bio => bio.split('\n\n').filter(Boolean).map(p => `                        <p>${p.replace(/\n/g,'<br>')}</p>`).join('\n');
+    const html_en = makeParagraphs(data.bio_en);
+    const html_pt = makeParagraphs(data.bio_pt);
+    const photos  = (data.photos || []).map((p,i) => `
+                                <div class="carousel-item${i===0?' active':''}">
+                                    <img src="${p}" class="d-block w-100" alt="Júlio César - Profile">
+                                </div>`).join('');
+
+    const out = `<!-- Paste into about.html col-lg-7 div -->\n${html_en}\n\n<!-- Paste into about_pt.html col-lg-7 div -->\n${html_pt}\n\n<!-- Photo carousel items -->\n${photos}`;
+    const ta = document.createElement('textarea');
+    ta.value = out; ta.style.cssText='position:fixed;top:60px;left:50%;transform:translateX(-50%);width:700px;max-width:95vw;height:400px;z-index:999;background:#1a1a1a;color:#eee;border:2px solid #cc0000;border-radius:6px;padding:14px;font-size:.8em;';
+    document.body.appendChild(ta); ta.select();
+    const close=document.createElement('button'); close.textContent='✕ Close'; close.className='btn-a'; close.style.cssText='position:fixed;top:30px;left:50%;transform:translateX(-50%);z-index:1000;';
+    close.onclick=()=>{ta.remove();close.remove();};
+    document.body.appendChild(close);
+    toast('About HTML generated — copy and paste into about.html');
+}
+
+// ─── PRESS ───────────────────────────────────────────────────────────────
+const PRESS_KEY = 'jcadmin_press';
+function loadPress() {
+    const saved = localStorage.getItem(PRESS_KEY);
+    const items = saved ? JSON.parse(saved) : [];
+    renderPress(items);
+}
+function renderPress(items) {
+    localStorage.setItem(PRESS_KEY, JSON.stringify(items));
+    document.getElementById('press-list').innerHTML = items.length === 0
+        ? '<p style="color:var(--text-muted);font-size:.82em;">No new articles added yet.</p>'
+        : items.map((it, i) => `
+            <div class="col-item">
+                <div class="info"><h5>${it.title}</h5><p><a href="${it.url}" target="_blank" style="color:var(--accent);">${it.url}</a></p></div>
+                <button class="btn-del btn-sm" onclick="removePressItem(${i})">Remove</button>
+            </div>`).join('');
+}
+function addPressItem() {
+    const title = document.getElementById('press-title').value.trim();
+    const url   = document.getElementById('press-url').value.trim();
+    const thumb = document.getElementById('press-thumb').value.trim();
+    if (!title || !url) { toast('Title and URL are required', true); return; }
+    const saved = localStorage.getItem(PRESS_KEY);
+    const items = saved ? JSON.parse(saved) : [];
+    items.push({ title, url, thumb });
+    renderPress(items);
+    document.getElementById('press-title').value = '';
+    document.getElementById('press-url').value = '';
+    document.getElementById('press-thumb').value = '';
+    toast('Article added');
+}
+function removePressItem(i) {
+    const saved = localStorage.getItem(PRESS_KEY);
+    const items = saved ? JSON.parse(saved) : [];
+    items.splice(i, 1); renderPress(items); toast('Removed');
+}
+
+// ─── CONTACT ─────────────────────────────────────────────────────────────
+const CONTACT_KEY = 'jcadmin_contact';
+function loadContact() {
+    const saved = localStorage.getItem(CONTACT_KEY);
+    const d = saved ? JSON.parse(saved) : {
+        us: { phone:'646-339-6413', email:'juliocesarnyc@yahoo.com', addr:'246 West 38th Street, Suite 1106 - New York, NY, 10018' },
+        br: { phone:'+55 84 3027 0512 | +55 84 9405 5260', email:'contato.juliocesarac@gmail.com', addr:'Rua Trairi, 514, Petropolis, Natal-RN Brasil' }
+    };
+    document.getElementById('c-us-phone').value = d.us.phone;
+    document.getElementById('c-us-email').value = d.us.email;
+    document.getElementById('c-us-addr').value  = d.us.addr;
+    document.getElementById('c-br-phone').value = d.br.phone;
+    document.getElementById('c-br-email').value = d.br.email;
+    document.getElementById('c-br-addr').value  = d.br.addr;
+}
+function saveContact() {
+    const d = {
+        us: { phone: document.getElementById('c-us-phone').value, email: document.getElementById('c-us-email').value, addr: document.getElementById('c-us-addr').value },
+        br: { phone: document.getElementById('c-br-phone').value, email: document.getElementById('c-br-email').value, addr: document.getElementById('c-br-addr').value }
+    };
+    localStorage.setItem(CONTACT_KEY, JSON.stringify(d));
+    toast('Contact saved');
+}
+
+// ─── START ────────────────────────────────────────────────────────────────
+// Try to auto-login if token is stored and valid
+(async () => {
+    if (TOKEN) {
+        const r = await fetch(API + '?action=list_collections');
+        if (r.status !== 401) {
+            document.getElementById('login-overlay').style.display = 'none';
+            init();
+            return;
+        }
+    }
+    // Show login
+})();
+</script>
+</body>
+</html>

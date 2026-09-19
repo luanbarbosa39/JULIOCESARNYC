@@ -1,0 +1,73 @@
+body{font-family: 'Montserrat', sans-serif;background:#1c1c1b;-webkit-background-size:cover;-moz-background-size:cover;background-size:cover;-o-background-size:cover;margin: 0;padding: 0}
+h1,
+h2,
+h3,
+h4{font-family: 'Montserrat'; text-align: center;} ,
+h5,
+h6{text-transform:uppercase;font-family:"Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;font-weight:700;letter-spacing:1px;}
+p{font-size:1em;line-height:1.8;color:#ffffff;font-size:1em;}
+a{color:#ffffff;text-decoration:none;}
+a:hover{color:#cc0000;transition:0.3s;}
+a:focus{outline:2px solid #cc0000;outline-offset:2px;}
+hr{max-width:400px;border-color:#cc0000;border-width:2px;}
+.btn-primary{background-color:#cc0000;border-color:#cc0000;}
+.btn-primary:hover{background-color:#990000;border-color:#990000;}
+.brand,
+.address-bar{display:none;}
+.img-full{min-width:100%;}
+.img-fluid{max-width:100%;height:auto;}
+.brand-before,
+.brand-name{text-transform:capitalize;}
+.brand-before{margin:15px 0;}
+.brand-name{margin:0;font-size:4em;}
+.tagline-divider{margin:15px auto 3px;max-width:250px;border-color:#999999;}
+.box{margin-bottom:20px;padding:10px 0px;background:#080808;background:rgba(255, 255, 255, 0);}
+.intro-text{text-transform:uppercase;font-size:1.25em;font-weight:400;letter-spacing:1px;}
+.img-border{float:none;margin:0 auto 0;border:#999999 solid 1px;}
+.img-left{float:none;margin:0 auto 0;}
+footer{background:#fff;background:rgba(0, 0, 0, 0);}
+footer p{margin:0;padding:5px 0;}
+@media screen and (min-width:768px){.brand{display:inherit;margin:0;padding:4px 0 5px;text-align:center;text-shadow:1px 1px 2px rgba(0,0,0,0.5);font-family:"Josefin Slab","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:5em;font-weight:700;line-height:normal;color:#000000;}
+.top-divider{margin-top:0;}
+.img-left{float:left;margin-right:25px;}
+.address-bar{display:inherit;margin:0;padding:0 0 10px;text-align:center;text-shadow:1px 1px 2px rgba(0,0,0,0.5);text-transform:uppercase;font-size:1.25em;font-weight:400;letter-spacing:3px;color:#fff;}
+.navbar{border-radius:0;background:#1c1c1b;min-height:0;}
+}
+@media screen and (min-width:1200px){.box:after{content:'';display:table;clear:both;}
+}
+.gallery{margin-top:50px;}
+.gallery-item{margin-bottom:10px;}
+.modal-dialog{max-height:100%}
+.modal-footer{text-align:center;color:#777}
+.pagination{margin:0;}
+.colecao{margin:10px;display:table-cell;text-align:center;vertical-align:middle
+width:30%;}
+.hide-bullets{list-style:none;margin-left:-40px;margin-top:20px;}
+.thumbnail{padding:0;border-color:}
+.carousel-inner>.carousel-item>img, .carousel-inner>.carousel-item>a>img{height:auto;text-align:center;}
+.modal-dialog{width:600px;}
+.thumbnail{margin-bottom:10px;}
+.mag{width:500px;margin:0 auto;float:none;}
+.mag img{max-width:100%;}
+.magnify{position:relative;cursor:none}
+.magnify-large{position:absolute;display:none;width:175px;height:175px;-webkit-box-shadow:0 0 0 7px rgba(255, 255, 255, 0.85), 0 0 7px 7px rgba(0, 0, 0, 0.25), inset 0 0 40px 2px rgba(0, 0, 0, 0.25);-moz-box-shadow:0 0 0 7px rgba(255, 255, 255, 0.85), 0 0 7px 7px rgba(0, 0, 0, 0.25), inset 0 0 40px 2px rgba(0, 0, 0, 0.25);box-shadow:0 0 0 7px rgba(255, 255, 255, 0.85), 0 0 7px 7px rgba(0, 0, 0, 0.25), inset 0 0 40px 2px rgba(0, 0, 0, 0.25);-webkit-border-radius:100%;-moz-border-radius:100%;border-radius:100%}
+@-webkit-keyframes fadeIn{from{opacity:0;opacity:1\9;}
+to{opacity:1;}
+}
+@-moz-keyframes fadeIn{from{opacity:0;opacity:1\9;}
+to{opacity:1;}
+}
+@keyframes fadeIn{from{opacity:0;opacity:1\9;}
+to{opacity:1;}
+}
+.fade-in{opacity:0;-webkit-animation:fadeIn ease-in 1;-moz-animation:fadeIn ease-in 1;animation:fadeIn ease-in 1;-webkit-animation-fill-mode:forwards;-moz-animation-fill-mode:forwards;animation-fill-mode:forwards;-webkit-animation-duration:1s;-moz-animation-duration:1s;animation-duration:1s;}
+.fade-in.one{animation:fadeIn ease 5s;-webkit-animation:fadeIn ease 5s;-moz-animation:fadeIn ease 5s;-o-animation:fadeIn ease 5s;-ms-animation:fadeIn ease 5s;}
+.fade-in.two{-webkit-animation-delay:1.2s;-moz-animation-delay:1.2s;animation-delay:1.2s;}
+.fade-in.three{-webkit-animation-delay:1.6s;-moz-animation-delay:1.6s;animation-delay:1.6s;}
+.iconflag{ width: 10%;text-align: center;padding-right:  35%;padding-left: 35%;float: left;}
+.flag {width: 25%;}
+@media(max-width: 800px) {
+    #mainlogo {
+        display: none;
+    }
+}

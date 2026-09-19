@@ -1,0 +1,60 @@
+{
+  "en": {
+    "nav": {
+      "home": "Home",
+      "about": "About",
+      "collections": "Collections",
+      "press": "Press",
+      "contact": "Contact",
+      "patterns": "Vogue Patterns",
+      "find_us": "Find Us",
+      "stores": {
+        "acasadeantonia": "A Casa de Antonia",
+        "pinga": "Pinga Store",
+        "jete": "Jeté"
+      }
+    },
+    "footer": {
+      "copyright": "Copyright © Julio Cesar NYC 2024",
+      "language": "Language",
+      "portuguese": "Português",
+      "english": "English"
+    },
+    "common": {
+      "haute_couture": "Haute Couture",
+      "exclusive_design": "Exclusive Design",
+      "premium_craftsmanship": "Premium Craftsmanship",
+      "latest_release": "Latest Release",
+      "signature_piece": "Signature Piece"
+    }
+  },
+  "pt": {
+    "nav": {
+      "home": "Início",
+      "about": "Sobre",
+      "collections": "Coleções",
+      "press": "Imprensa",
+      "contact": "Contato",
+      "patterns": "Padrões Vogue",
+      "find_us": "Encontre-nos",
+      "stores": {
+        "acasadeantonia": "A Casa de Antonia",
+        "pinga": "Loja Pinga",
+        "jete": "Jeté"
+      }
+    },
+    "footer": {
+      "copyright": "Copyright © Julio Cesar NYC 2024",
+      "language": "Idioma",
+      "portuguese": "Português",
+      "english": "English"
+    },
+    "common": {
+      "haute_couture": "Alta Costura",
+      "exclusive_design": "Design Exclusivo",
+      "premium_craftsmanship": "Artesanato Premium",
+      "latest_release": "Lançamento Recente",
+      "signature_piece": "Peça Assinatura"
+    }
+  }
+}
